@@ -1,0 +1,26 @@
+{
+    "Next.js page component": {
+        "prefix": ["tsnp"],
+        "body": [
+            "import styles from \"./${TM_DIRECTORY/^.+\\\\(.*)$/$1/}.module.scss\"",
+            "",
+            "export default function ${TM_DIRECTORY/^.+\\\\(.*)$/$1/}() {",
+            "\treturn (",
+            "\t\t<div/>",
+            "\t)",
+            "}",
+            ""
+        ],
+        "scope": "typescriptreact",
+        "description": "Page component for Next.js app"
+    },
+    "Next.js page scss module": {
+        "prefix": ["nextstyle"],
+        "body": [
+            "@import \"../../styles/uiBase.scss\";",
+            ""
+        ],
+        "scope": "scss",
+        "description": "Page component for Next.js app"
+    }
+}
