@@ -18,6 +18,9 @@
     "paths": {
       "@/UIComponents/*": ["./components/UI/*"],
       "@/Components/*": ["./components/functional/*"],
+      "@/Store": ["./store/store.ts"],
+      "@/Hooks": ["./store/hooks.ts"],
+      "@/Features/*": ["./store/features/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
