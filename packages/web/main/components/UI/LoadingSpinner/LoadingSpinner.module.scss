@@ -1,0 +1,8 @@
+@import "../../../styles/uiBase.scss";
+
+.spinner {
+    width: 10rem;
+    height: 10rem;
+    border: 2px solid $colorTextPrimary;
+    animation: Spin 5s infinite linear;
+}

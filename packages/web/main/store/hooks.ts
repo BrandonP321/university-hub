@@ -14,3 +14,5 @@ const getTypedReduxHooks = <TAppDispatch extends ThunkDispatch<any, any, any>, T
 export const { useAppDispatch, useAppSelector } = getTypedReduxHooks<AppDispatch, RootState>();
 
 export const useResponsive = () => useAppSelector(state => state.responsive);
+
+export const usePageLoading = () => useAppSelector(state => state.pageLoading);

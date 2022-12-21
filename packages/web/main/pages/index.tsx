@@ -1,9 +1,8 @@
-import PageHead from '@/Components/PageHead'
-import Image from 'next/image'
-import Home from './Home'
+import Home from "./Home"
+import styles from "./pages.module.scss"
 
 export default function Index() {
-  return (
-    <Home/>
-  )
+    return (
+        <Home/>
+    )
 }

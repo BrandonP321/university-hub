@@ -1,5 +1,7 @@
+import FullPageLoadingSpinner from "@/UIComponents/FullPageLoadingSpinner";
 import { useEffect } from "react";
 import { ReduxUtils } from "utils/ReduxUtils";
+import { RouterPageLoadingSpinner } from "../PageLoadingSpinner";
 
 type LayoutProps = {
     children: React.ReactNode;
@@ -17,6 +19,8 @@ export default function Layout({ children }: LayoutProps) {
 
     return (
         <>
+            <FullPageLoadingSpinner/>
+            <RouterPageLoadingSpinner/>
             <main>{children}</main>
         </>
     )

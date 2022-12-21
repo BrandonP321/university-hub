@@ -1,2 +1,31 @@
 @import "./uiBase.scss";
 
+* {
+	scroll-behavior: smooth;
+
+	// set custom scroll styles for devices that have a cursor
+	@include nonTouchDevice() {
+		@include ScrollbarWidth();
+		
+		@include ScrollbarTrack();
+		
+		@include ScrollbarThumb();
+	}
+}
+
+html {
+	color: $colorTextPrimary;
+}
+
+html[data-scroll-locked="true"] {
+
+	body {
+		position: fixed;
+		overflow-y: scroll;
+	}
+}
+
+body {
+    min-height: 100%;
+	background-color: $siteBg;
+}

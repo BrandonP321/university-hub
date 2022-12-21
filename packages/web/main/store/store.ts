@@ -1,9 +1,11 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import responsiveReducer from "@/Features/responsive/responsiveSlice";
+import pageLoadingReducer from "@/Features/pageLoading/pageLoading";
 
 export const store = configureStore({
     reducer: {
-        responsive: responsiveReducer
+        responsive: responsiveReducer,
+        pageLoading: pageLoadingReducer
     }
 })
 
