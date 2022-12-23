@@ -2,7 +2,8 @@
   "name": "university-hub",
   "packageManager": "yarn@3.3.0",
   "workspaces": [
-    "packages/web/*"
+    "packages/web/*",
+    "packages/shared"
   ],
   "devDependencies": {
     "turbo": "^1.6.3"

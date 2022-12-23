@@ -3,10 +3,13 @@ import { setShowPageSpinner } from "@/Features/pageLoading/pageLoading";
 import { useAppDispatch, usePageLoading } from "@/Hooks"
 import Link from "next/link"
 import styles from "./Home.module.scss"
+import { RegexUtils } from "@/Shared/utils/RegexUtils"
 
 export default function Home() {
     const dispatch = useAppDispatch();
     const { loading } = usePageLoading();
+
+    console.log(RegexUtils.emailRegex);
 
     const handleClick = () => {
         dispatch(setShowPageSpinner({loading: !loading}));

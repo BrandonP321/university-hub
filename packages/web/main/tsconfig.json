@@ -34,7 +34,13 @@
       ],
       "@/Features/*": [
         "./store/features/*"
-      ]
+      ],
+      "@/Shared/*": [
+        "../../shared/src/common/*"
+      ],
+      "@/SharedWeb/*": [
+        "../../shared/src/web/*"
+      ],
     },
     "plugins": [
       {

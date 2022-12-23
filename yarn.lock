@@ -418,6 +418,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@university-hub/shared@1.0.0, @university-hub/shared@workspace:packages/shared":
+  version: 0.0.0-use.local
+  resolution: "@university-hub/shared@workspace:packages/shared"
+  languageName: unknown
+  linkType: soft
+
 "abbrev@npm:^1.0.0":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -2166,11 +2172,13 @@ __metadata:
     "@types/node": 18.11.17
     "@types/react": 18.0.26
     "@types/react-dom": 18.0.9
+    "@university-hub/shared": 1.0.0
     classnames: ^2.3.2
     destyle.css: ^4.0.0
     eslint: 8.30.0
     eslint-config-next: 13.0.7
     next: 13.0.7
+    next-transpile-modules: ^10.0.0
     react: 18.2.0
     react-dom: 18.2.0
     react-redux: ^8.0.5
@@ -2374,6 +2382,15 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
+  languageName: node
+  linkType: hard
+
+"next-transpile-modules@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "next-transpile-modules@npm:10.0.0"
+  dependencies:
+    enhanced-resolve: ^5.10.0
+  checksum: 3300fc7081f63b2c9487588db7cbe718f209dfd2111adec22d9c8af0e3c8ade2d95fd45f91e045546d78d98cafc78a49431de9a623360d33831b5e694bf007c9
   languageName: node
   linkType: hard
 
