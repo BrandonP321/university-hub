@@ -6,6 +6,14 @@ type TUrlParam = {
 class Url {
     private url;
 
+    public get hash() { return this.url.hash };
+    public get host() { return this.url.host };
+    public get params() { return this.url.searchParams };
+    public get path() { return this.url.pathname };
+    public get port() { return this.url.port };
+    public get protocol() { return this.url.protocol };
+    public get origin() { return this.url.origin };
+
     constructor(url: string) {
         this.url = new URL(url);
     }
@@ -15,7 +23,7 @@ class Url {
     }
     
     public addParam = (param: TUrlParam) => {
-        this.url.searchParams.append(param.key, param.value);
+        this.params.append(param.key, param.value);
 
         return this;
     }
@@ -27,7 +35,7 @@ class Url {
     }
 
     public getParam = (key: string) => {
-        return this.url.searchParams.get(key);
+        return this.params.get(key);
     }
 }
 
@@ -39,10 +47,8 @@ export class UrlUtils {
     public static getParam = (url: string, key: string) => {
         return this.url(url).getParam(key);
     }
+
+    public static addParams = (url: string, ...params: TUrlParam[]) => {
+        return this.url(url).addParams(...params).toString();
+    }
 }
-
-const url = "https://bungie.net";
-
-const testUrl = new URL(url);
-
-const myUrl = UrlUtils.url(url).addParams().toString()
