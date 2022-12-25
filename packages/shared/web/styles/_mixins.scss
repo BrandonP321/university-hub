@@ -1,0 +1,13 @@
+@mixin GlobalBrowserUtilsStyles() {
+    html[data-scroll-locked="true"] {
+
+        body {
+            position: fixed;
+            overflow-y: scroll;
+        }
+    }
+    
+    body {
+        min-height: 100%;
+    }
+}
