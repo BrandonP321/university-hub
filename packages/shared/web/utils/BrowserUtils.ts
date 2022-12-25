@@ -1,7 +1,6 @@
 export class BrowserUtils {
 	/* Locks window scroll bar while retaining width of scroll bar */
 	public static lockScroll = () => {
-        console.log("lock scroll")
 		const htmlEle = document.querySelector("html");
 		const scrollTop = document.documentElement.scrollTop;
 

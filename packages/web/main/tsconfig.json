@@ -20,27 +20,11 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/UIComponents/*": [
-        "./components/UI/*"
-      ],
-      "@/Components/*": [
-        "./components/functional/*"
-      ],
-      "@/Store": [
-        "./store/store.ts"
-      ],
-      "@/Hooks": [
-        "./store/hooks.ts"
-      ],
-      "@/Features/*": [
-        "./store/features/*"
-      ],
-      "@/Shared/*": [
-        "../../shared/src/common/*"
-      ],
-      "@/SharedWeb/*": [
-        "../../shared/src/web/*"
-      ],
+      "@/UIComponents/*": ["./components/UI/*"],
+      "@/Components/*": ["./components/functional/*"],
+      "@/Store": ["./store/store.ts"],
+      "@/Hooks": ["./store/hooks.ts"],
+      "@/Features/*": ["./store/features/*"],
     },
     "plugins": [
       {
