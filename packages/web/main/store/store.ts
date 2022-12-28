@@ -1,13 +1,7 @@
-import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import responsiveReducer from "@/Features/responsive/responsiveSlice";
-import pageLoadingReducer from "@/Features/pageLoading/pageLoading";
+import { Action, ThunkAction } from "@reduxjs/toolkit";
+import { ReduxUtils } from "@university-hub/shared/web/utils";
 
-export const store = configureStore({
-    reducer: {
-        responsive: responsiveReducer,
-        pageLoading: pageLoadingReducer
-    }
-})
+export const { store } = ReduxUtils.store().withDefaultReducers().create();
 
 // Infer the `RootState` and `AppDispatch` from the store itself
 export type RootState = ReturnType<typeof store.getState>;

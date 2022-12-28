@@ -5,6 +5,10 @@
     "packages/web/*",
     "packages/shared"
   ],
+  "scripts": {
+    "web:main": "yarn workspace @university-hub/web-main",
+    "web:main:start": "yarn web:main dev"
+  },
   "devDependencies": {
     "turbo": "^1.6.3"
   }

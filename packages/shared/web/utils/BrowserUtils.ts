@@ -7,7 +7,7 @@ export class BrowserUtils {
 		document.body.style.top = `-${scrollTop}px`
 
 		const isBodyOverflowing = document.body.clientHeight > window.innerHeight;
-        console.log(document.body.clientHeight, window.innerHeight);
+
 		// lock scroll only if body is overflowing window
 		isBodyOverflowing && htmlEle?.setAttribute("data-scroll-locked", "true");
 		/* Save scroll top value in data attr of <html> */

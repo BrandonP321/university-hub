@@ -1,5 +1,5 @@
 import PageHead from "@/Components/PageHead"
-import { setShowPageSpinner } from "@/Features/pageLoading/pageLoading";
+import { setShowPageSpinner } from "@university-hub/shared/web/store/features/pageLoading/pageLoading";
 import { useAppDispatch, usePageLoading } from "@/Hooks"
 import Link from "next/link"
 import styles from "./Home.module.scss"
@@ -18,7 +18,7 @@ export default function Home() {
 
     return (
         <div>
-            <PageHead title={"Home"} />
+            <PageHead />
             <h1>Hello</h1>
             <Link href={"/Test"}>Go to Test</Link>
             <div style={{ width: "20rem", height: "200vh", background: "black", marginBottom: "10rem" }}/>

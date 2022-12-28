@@ -4,6 +4,10 @@
     "version": "1.0.0",
     "private": true,
     "dependencies": {
+        "@reduxjs/toolkit": "^1.9.1",
+        "formik": "^2.2.9",
+        "react-redux": "^8.0.5",
+        "sass": "^1.57.1",
         "yup": "^0.32.11"
     }
 }

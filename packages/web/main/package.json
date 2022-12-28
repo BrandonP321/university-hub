@@ -1,5 +1,5 @@
 {
-  "name": "main",
+  "name": "@university-hub/web-main",
   "packageManager": "yarn@3.2.3",
   "version": "0.1.0",
   "private": true,

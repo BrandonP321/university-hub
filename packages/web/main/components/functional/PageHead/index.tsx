@@ -1,21 +1,21 @@
-import Head from "next/head";
-import styles from "./PageHelmet.module.scss"
+import NextHead, { NextHeadMetaProps } from "@university-hub/shared/web/components/NextHead/NextHead"
 
-// TODO: Add method for passing in keywords metadata
-type PageHeadProps = {
-    title?: string;
-    description?: string;
+type PageHeadProps = NextHeadMetaProps & {
     children?: React.ReactNode[];
 }
 
-/** Injects meta data directly into `<head>` through the `<Head>` component provided by Next.js */
-export default function PageHead({ description, title, children }: PageHeadProps) {
-    return (
-        <Head>
-            {title && <title>{title}</title>}
-            {description && <meta name={"description"} content={description}/>}
+/** Injects meta data directly into `<head>` through `<NextHead>` */
+export default function PageHead(props: PageHeadProps) {
+    const { children, ...rest } = props;
 
+    const defaults: NextHeadMetaProps = {
+        title: "Default Title",
+        description: "Default description"
+    }
+
+    return (
+        <NextHead {...rest} defaults={defaults}>
             {children}
-        </Head>
+        </NextHead>
     )
 }
