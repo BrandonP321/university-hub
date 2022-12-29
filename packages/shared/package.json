@@ -1,6 +1,6 @@
 {
     "name": "@university-hub/shared",
-    "packageManager": "yarn@3.2.3",
+    "packageManager": "yarn@3.3.0",
     "version": "1.0.0",
     "private": true,
     "dependencies": {

@@ -1,8 +1,10 @@
-import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
+import { configureStore, ReducersMapObject, StateFromReducersMapObject } from "@reduxjs/toolkit";
+import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
+import { useDispatch, useSelector } from "react-redux";
 import { TypedUseSelectorHook } from "react-redux/es/types";
 import pageLoadingReducer from "../store/features/pageLoading/pageLoading"
 import responsiveReducer from "../store/features/responsive/responsiveSlice"
+
 
 class ReduxStore<T extends ReducersMapObject> {
     private _reducers;
@@ -52,13 +54,19 @@ class ReduxStore<T extends ReducersMapObject> {
      * @returns Configured Redux store
      */
     public create = () => {
-        const store = configureStore<T>({
+        const store = configureStore<StateFromReducersMapObject<T>>({
             reducer: this._reducers
         })
 
-        // const useAppSelector = useSelector as TypedUseSelectorHook<ReturnType>
+        return { store, ...this.getTypedHooks(store) }
+    }
 
-        return { store }
+    /** Returns typed `useSelector` and `useDispatch` hooks */
+    public getTypedHooks<TStore extends ToolkitStore>(store: TStore) {
+        return {
+            useAppSelector: useSelector as TypedUseSelectorHook<ReturnType<TStore["getState"]>>,
+            useAppDispatch: () => useDispatch<typeof store.dispatch>()
+        }
     }
 }
 
