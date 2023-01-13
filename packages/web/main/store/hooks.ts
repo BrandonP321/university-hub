@@ -1,18 +1,7 @@
-import { ThunkDispatch } from "@reduxjs/toolkit";
-import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "./store";
+import { useAppDispatch, useAppSelector } from "./store";
 
-// TODO: abstract into shared workspace
-/** Returns typed redux hooks for app selector and dispatch */
-const getTypedReduxHooks = <TAppDispatch extends ThunkDispatch<any, any, any>, TRootState extends {}>() => {
-    return {
-        useAppSelector: useSelector as TypedUseSelectorHook<RootState>,
-        useAppDispatch: () => useDispatch<AppDispatch>()
-    }
-}
-
-export const { useAppDispatch, useAppSelector } = getTypedReduxHooks<AppDispatch, RootState>();
+/** Re-export app selector & dispatch hooks to have them exist in same file as other hooks */
+export { useAppDispatch, useAppSelector }
 
 export const useResponsive = () => useAppSelector(state => state.responsive);
-
 export const usePageLoading = () => useAppSelector(state => state.pageLoading);

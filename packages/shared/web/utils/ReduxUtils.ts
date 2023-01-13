@@ -5,7 +5,6 @@ import { TypedUseSelectorHook } from "react-redux/es/types";
 import pageLoadingReducer from "../store/features/pageLoading/pageLoading"
 import responsiveReducer from "../store/features/responsive/responsiveSlice"
 
-
 class ReduxStore<T extends ReducersMapObject> {
     private _reducers;
     public get reducers() { return this._reducers };
