@@ -1,5 +1,6 @@
+import { Store } from "@reduxjs/toolkit";
+import { ReduxSliceHelper } from "../..";
 import { breakpointHit, ResponsiveState } from "./responsiveSlice";
-import { store } from "@/Store";
 
 class MediaQuery {
 	private _maxWidth;
@@ -29,12 +30,16 @@ class MediaQuery {
 /**
  * Utility class for logic around updating Responsive slice in redux store
  */
-export class ResponsiveUtils {
+export class ResponsiveSliceHelperInternal<T extends Store> implements ReduxSliceHelper {
 	/* redux store instanced passed in to constructor */
-	private static store = store;
+	private store;
+
+	constructor(store: T) {
+		this.store = store;
+	}
 
 	/* All media queries */
-	private static queries: { [key in keyof ResponsiveState]: MediaQuery } = {
+	private queries: { [key in keyof ResponsiveState]: MediaQuery } = {
 		max: new MediaQuery(1664),
 		large: new MediaQuery(1200),
 		medium: new MediaQuery(992),
@@ -44,15 +49,23 @@ export class ResponsiveUtils {
 	}
 
 	/* Getters for retrieving status of each media query */
-	public static get max() { return this.queries.max.matches };
-	public static get large() { return this.queries.large.matches };
-	public static get medium() { return this.queries.medium.matches };
-	public static get mobile() { return this.queries.mobile.matches };
-	public static get tiny() { return this.queries.tiny.matches };
-	public static get pcio() { return this.queries.pico.matches };
+	public get max() { return this.queries.max.matches };
+	public get large() { return this.queries.large.matches };
+	public get medium() { return this.queries.medium.matches };
+	public get mobile() { return this.queries.mobile.matches };
+	public get tiny() { return this.queries.tiny.matches };
+	public get pico() { return this.queries.pico.matches };
+
+	public onAppMount = () => {
+		this.addMediaQueryListeners();
+	}
+
+	public onAppUnmount = () => {
+		window.removeEventListener("resize", this.checkMediaQueries)
+	}
 
 	/* Adds resize event listener to window for checking queries on window resize */
-	private static addMediaQueryListeners = () => {
+	private addMediaQueryListeners = () => {
 		// perform initial check on all queries
 		this.checkMediaQueries();
 
@@ -60,7 +73,7 @@ export class ResponsiveUtils {
 	}
 
 	/* Checks all media queries and dispatches any changed breakpoints to redux store */
-	private static checkMediaQueries = () => {
+	private checkMediaQueries = () => {
 		let queryKey: keyof typeof this.queries;
 		for (queryKey in this.queries) {
 			const mq = this.queries[queryKey];
@@ -77,15 +90,7 @@ export class ResponsiveUtils {
 	}
 
 	/* Dispatches new media query status to redux store */
-	private static handleMediaQueryChange = ({ breakpoint, matches }: { breakpoint: keyof ResponsiveState, matches: boolean }) => {
+	private handleMediaQueryChange = ({ breakpoint, matches }: { breakpoint: keyof ResponsiveState, matches: boolean }) => {
 		this.store.dispatch(breakpointHit({ breakpoint, matches }))
-	}
-
-	public static startDataStoreListeners = () => {
-		this.addMediaQueryListeners();
-	}
-
-	public static destoryStoreListeners = () => {
-		window.removeEventListener("resize", this.checkMediaQueries)
 	}
 }
