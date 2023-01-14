@@ -31,5 +31,5 @@ const responsiveSlice = createSlice({
     }
 });
 
-export const { breakpointHit } = responsiveSlice.actions;
+export const responsiveSliceActions = responsiveSlice.actions;
 export default responsiveSlice.reducer;

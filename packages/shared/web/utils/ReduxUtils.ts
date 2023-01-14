@@ -6,7 +6,7 @@ import { ReduxStore } from "./ReduxStore";
 export class ReduxUtils {
     /** Creates ReduxStore instance for configuring a redux store */
     public static store = () => {
-        return new ReduxStore({});
+        return new ReduxStore({}, {});
     }
 
     // public static getResponsiveSliceHelper<TStore extends Store>(store: TStore) { return new ResponsiveSliceHelperInternal(store) }

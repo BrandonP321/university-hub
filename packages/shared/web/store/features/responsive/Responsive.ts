@@ -1,6 +1,6 @@
 import { Store } from "@reduxjs/toolkit";
 import { ReduxSliceHelper } from "../..";
-import { breakpointHit, ResponsiveState } from "./responsiveSlice";
+import { responsiveSliceActions, ResponsiveState } from "./responsiveSlice";
 
 class MediaQuery {
 	private _maxWidth;
@@ -91,6 +91,6 @@ export class ResponsiveSliceHelperInternal<T extends Store> implements ReduxSlic
 
 	/* Dispatches new media query status to redux store */
 	private handleMediaQueryChange = ({ breakpoint, matches }: { breakpoint: keyof ResponsiveState, matches: boolean }) => {
-		this.store.dispatch(breakpointHit({ breakpoint, matches }))
+		this.store.dispatch(responsiveSliceActions.breakpointHit({ breakpoint, matches }))
 	}
 }

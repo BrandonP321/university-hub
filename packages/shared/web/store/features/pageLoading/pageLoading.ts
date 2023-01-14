@@ -17,5 +17,5 @@ const pageLoading = createSlice({
     }
 });
 
-export const { setShowPageSpinner } = pageLoading.actions;
+export const pageLoadingSliceActions = pageLoading.actions;
 export default pageLoading.reducer;
