@@ -30,14 +30,7 @@ class MediaQuery {
 /**
  * Utility class for logic around updating Responsive slice in redux store
  */
-export class ResponsiveSliceHelperInternal<T extends Store> implements ReduxSliceHelper {
-	/* redux store instanced passed in to constructor */
-	private store;
-
-	constructor(store: T) {
-		this.store = store;
-	}
-
+export default class ResponsiveSliceHelperInternal<T extends Store> extends ReduxSliceHelper<T> {
 	/* All media queries */
 	private queries: { [key in keyof ResponsiveState]: MediaQuery } = {
 		max: new MediaQuery(1664),

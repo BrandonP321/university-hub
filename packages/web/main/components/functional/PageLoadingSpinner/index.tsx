@@ -1,4 +1,5 @@
 import { useAppDispatch } from "@/Hooks";
+import { actions } from "@/Store";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -12,11 +13,11 @@ export function PageLoadingSpinner({ loading }: PageLoadingSpinnerProps) {
 
     useEffect(() => {
         // if component is unmounted, ensure loading spinner gets hidden
-        return () => {dispatch(setShowPageSpinner({ loading: false }))}
+        return () => { dispatch(actions.pageLoading.setShowPageSpinner({ loading: false })) }
     }, [])
 
     useEffect(() => {
-        dispatch(setShowPageSpinner({ loading }))
+        dispatch(actions.pageLoading.setShowPageSpinner({ loading }))
     }, [loading])
 
     return null;

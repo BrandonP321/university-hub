@@ -1,6 +1,6 @@
 import PageHead from "@/Components/PageHead"
-import { setShowPageSpinner } from "@university-hub/shared/web/store/features/pageLoading/pageLoading";
 import { useAppDispatch, usePageLoading } from "@/Hooks"
+import { actions } from "@/Store";
 import Link from "next/link"
 import styles from "./Home.module.scss"
 
@@ -9,10 +9,10 @@ export default function Home() {
     const { loading } = usePageLoading();
 
     const handleClick = () => {
-        dispatch(setShowPageSpinner({loading: !loading}));
+        dispatch(actions.pageLoading.setShowPageSpinner({ loading: !loading }));
 
         setTimeout(() => {
-            dispatch(setShowPageSpinner({loading}))
+            dispatch(actions.pageLoading.setShowPageSpinner({ loading }))
         }, 1500)
     }
 
