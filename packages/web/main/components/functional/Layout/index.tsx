@@ -1,6 +1,6 @@
 import FullPageLoadingSpinner from "@/UIComponents/FullPageLoadingSpinner";
 import React from "react";
-import { RouterPageLoadingSpinner } from "../PageLoadingSpinner";
+import { RouterPageLoadingSpinner } from "@university-hub/shared/web/components/PageLoadingSpinner";
 
 type LayoutProps = {
     children: React.ReactNode;

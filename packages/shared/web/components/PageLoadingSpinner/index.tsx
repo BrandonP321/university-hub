@@ -1,5 +1,4 @@
-import { useAppDispatch } from "@/Hooks";
-import { actions } from "@/Store";
+import { useAppDispatch, actions } from "../../store/hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
