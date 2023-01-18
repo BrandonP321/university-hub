@@ -1,0 +1,20 @@
+$primaryBgCssVar: --primary-bg-color;
+$bgPrimary: var(#{$primaryBgCssVar});
+
+$secondaryBgCssVar: --secondary-bg-color;
+$bgSecondary: var(#{$secondaryBgCssVar});
+
+$primaryTextCssVar: --primary-text-color;
+$textPrimary: var(#{$primaryTextCssVar});
+
+$secondaryTextCssVar: --secondary-text-color;
+$textSecondary: var(#{$secondaryTextCssVar});
+
+@mixin GlobalCssVars() {
+    :root {
+        #{$primaryBgCssVar}: red;
+        #{$secondaryBgCssVar}: black;
+        #{$primaryTextCssVar}: black;
+        #{$secondaryTextCssVar}: white;
+    }
+}

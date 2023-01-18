@@ -1,6 +1,6 @@
 import styles from "./LoadingSpinner.module.scss"
 
-export default function LoadingSpinner() {
+export function LoadingSpinner() {
     return (
         <div className={styles.spinner}/>
     )

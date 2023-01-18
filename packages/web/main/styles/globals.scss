@@ -1,6 +1,7 @@
 @import "./uiBase.scss";
 
 @include GlobalBrowserUtilsStyles();
+@include GlobalCssVars();
 
 * {
 	scroll-behavior: smooth;
@@ -13,6 +14,10 @@
 		
 		@include ScrollbarThumb();
 	}
+}
+
+:root {
+	#{$primaryBgCssVar}: green;
 }
 
 html {

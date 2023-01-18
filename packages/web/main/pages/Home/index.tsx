@@ -2,9 +2,11 @@ import PageHead from "@/Components/PageHead"
 import { useAppDispatch, usePageLoading } from "@/Hooks"
 import { actions } from "@/Store";
 import Link from "next/link"
+import { AppPageProps } from "pages/_app";
 import styles from "./Home.module.scss"
 
-export default function Home() {
+export default function Home(props: AppPageProps) {
+    console.log(props.siteColors);
     const dispatch = useAppDispatch();
     const { loading } = usePageLoading();
 

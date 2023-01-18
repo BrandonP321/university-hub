@@ -439,6 +439,7 @@ __metadata:
   resolution: "@university-hub/shared@workspace:packages/shared"
   dependencies:
     "@reduxjs/toolkit": ^1.9.1
+    classnames: ^2.3.2
     formik: ^2.2.9
     react-redux: ^8.0.5
     sass: ^1.57.1

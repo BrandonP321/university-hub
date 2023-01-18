@@ -1,21 +1,29 @@
-import FullPageLoadingSpinner from "@/UIComponents/FullPageLoadingSpinner";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { FullPageLoadingSpinner } from "@university-hub/shared/web/UIKit";
 import { RouterPageLoadingSpinner } from "@university-hub/shared/web/components/PageLoadingSpinner";
+import { SiteColorsMap } from "@university-hub/shared/common/utils";
+import { WebColorUtils } from "@university-hub/shared/web/utils";
 
 type LayoutProps = {
     children: React.ReactNode;
+    siteColors: SiteColorsMap;
 }
 
 /**
  * App layout that persists across all pages
  */
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, siteColors }: LayoutProps) {
+    useEffect(() => {
+        WebColorUtils.setSiteColors(siteColors);
+    }, [])
 
     return (
         <>
-            <FullPageLoadingSpinner/>
             <RouterPageLoadingSpinner/>
-            <main>{children}</main>
+            <main>
+                <FullPageLoadingSpinner/>
+                {children}
+            </main>
         </>
     )
 }
