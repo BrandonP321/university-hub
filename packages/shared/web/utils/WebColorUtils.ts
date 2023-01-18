@@ -3,6 +3,7 @@ import { ColorUtils, SiteColorKeys, SiteColorsMap } from "../../common/utils/Col
 type TSiteColorKeysToCSSVarsMap = {[key in SiteColorKeys]: string};
 
 export class WebColorUtils {
+    /** Object that maps keys for customizable site colors (coming from API) to their corresponding CSS vars */
     private static siteColorKeysToCSSVarsMap: TSiteColorKeysToCSSVarsMap = {
         primaryBgColor: "--primary-bg-color",
         secondaryBgColor: "--secondary-bg-color",
@@ -11,7 +12,7 @@ export class WebColorUtils {
     }
 
     /** 
-     * Updates color css variables.
+     * Updates CSS variable values for customizable site colors
      * @param ele - Element to apply new CSS variable colors to
      */
     private static updateCssVars(colors: SiteColorsMap, ele: HTMLElement) {

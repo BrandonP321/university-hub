@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import { ReduxUtils } from "@university-hub/shared/web/utils";
 import { SiteColorsMap } from "@university-hub/shared/common/utils";
 
+/** Props passed into each page component */
 export type AppPageProps = {
   siteColors: SiteColorsMap;
   isInitialPropsMap: boolean;
@@ -23,7 +24,7 @@ function App({ Component, pageProps }: AppProps<AppPageProps>) {
   }, [])
 
   useEffect(() => {
-    /** if pageProps obj is populated, we can cache that data to use it on all pages */
+    /* if pageProps obj is populated, we can cache that data to use it across all pages */
     pageProps.isInitialPropsMap && (cachedPageProps.current = pageProps);
   }, [pageProps])
   
@@ -44,14 +45,14 @@ const tempColors: SiteColorsMap = {
 }
 
 App.getInitialProps = async function getServerSideProps({ router }: any): Promise<{ pageProps: AppPageProps } | {}> {
-  /** Detects whether or not `.getInitialProps()` is running on the server */
+  /* Detect whether or not `.getInitialProps()` is running on the server */
   const isRunningOnServer = router.isSsr === undefined
   
-  /** Only pre-fetch data if .getInitialProps() is be executed for the first time, which would be on the server */
+  /** Only pre-fetch data if .getInitialProps() is be executed for the first time, which would happen on the server */
   if (isRunningOnServer) {
     // TODO: replace this simulated server response delay with an actual API fetch
     const res = await (new Promise((resolve, reject) => {
-        setTimeout(resolve, 0);
+        setTimeout(resolve, 150);
     }))
     
     return { pageProps: { siteColors: tempColors, isInitialPropsMap: true } }

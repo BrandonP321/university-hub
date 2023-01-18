@@ -14,5 +14,6 @@ export class SchemaUtils {
         .matches(/(?=.*[a-z])/, "Password must contain at least 1 lowercase letter")
         .matches(/(?=.*\d)/, "Password must contain at least 1 number");
 
+    /** String schema for a string in `rgb(r, g, b)` format */
     public static rgbColorSchema = Yup.string().matches(RegexUtils.rgbColorRegex, "Invalid color")
 }

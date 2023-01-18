@@ -28,7 +28,7 @@ class MediaQuery {
 };
 
 /**
- * Utility class for logic around updating Responsive slice in redux store
+ * Slice helper responsible for adding/revmoving window resize event listeners for updating Redux store
  */
 export default class ResponsiveSliceHelperInternal<T extends Store> extends ReduxSliceHelper<T> {
 	/* All media queries */

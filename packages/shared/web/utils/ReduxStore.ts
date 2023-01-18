@@ -15,6 +15,10 @@ type ActionsMap<TReducer extends ReducersMapObject> = {
 export type SliceHelpersMap<TReducersMap extends {}> = {[key in keyof Partial<TReducersMap>]: Promise<any>}
 export type SliceHelperImport = Promise<{ default: typeof ReduxSliceHelper }>;
 
+/** 
+ * Allows use of method chaining to easily configure a redux store with any number redux 
+ * slices with reducers, actions, and slice helpers 
+ */
 export class ReduxStore<TReducer extends ReducersMapObject, TActions extends ActionsMap<TReducer>, TSliceHelpers extends SliceHelpersMap<TReducer>> {
     private _reducers;
     private _actions;
@@ -38,12 +42,12 @@ export class ReduxStore<TReducer extends ReducersMapObject, TActions extends Act
         }}),
     })
 
-    /** Allows for chaining of a reducer method to add reducer to store */
+    /** Allows for chaining of a reducer function from `.getDefaultReducers()` to add that reducer to the store */
     public with() {
         return this.getDefaultReducers()
     }
 
-    /** Adds all default reducers to store */
+    /** Adds all default reducers from `.getDefaultReducers()` to store */
     public withDefaultReducers() {
         const reducers = this.getDefaultReducers();
 
@@ -52,7 +56,6 @@ export class ReduxStore<TReducer extends ReducersMapObject, TActions extends Act
         type TDefaultActionsMap = {[key in keyof typeof reducers]: ReturnType<typeof reducers[key]>["actions"][key]};
         type TDefaultSliceHelpersMap = {[key in keyof typeof reducers]: ReturnType<typeof reducers[key]>["sliceHelpers"][key]};
 
-        // let store: ReduxStore<TReducer & Partial<TDefaultReducerMap>> = this;
         let store: ReduxStore<TReducer & Partial<TDefaultReducerMap>, TActions, TSliceHelpers & Partial<TDefaultSliceHelpersMap>> = this;
         let r: keyof typeof reducers;
 
@@ -63,7 +66,7 @@ export class ReduxStore<TReducer extends ReducersMapObject, TActions extends Act
         return store as ReduxStore<TReducer & TDefaultReducerMap, TActions & TDefaultActionsMap, TSliceHelpers & TDefaultSliceHelpersMap>;
     }
 
-    /** Adds reducers to store and returns new ReduxStore instance for chaining of methods */
+    /** Adds any number of reducers to store and returns new ReduxStore instance for chaining of methods */
     public addReducers<T extends {[key in string]: { reducer: Reducer, actions: {[key: string]: AnyAction}, sliceHelpers?: SliceHelpersMap<{}> }}>(slices: T) {
         type TNewReducers = {[key in keyof T]: T[key]["reducer"]};
         type TNewActions = {[key in keyof T]: T[key]["actions"]};

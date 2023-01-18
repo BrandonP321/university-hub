@@ -1,3 +1,4 @@
+// Needs to be included in any web client package that uses BrowserUtils to lock/unlock page scroll
 @mixin GlobalBrowserUtilsStyles() {
     html[data-scroll-locked="true"] {
 

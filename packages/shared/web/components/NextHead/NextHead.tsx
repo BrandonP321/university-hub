@@ -11,7 +11,8 @@ export type NextHeadProps = NextHeadMetaProps & {
     defaults: NextHeadMetaProps;
 }
 
-/** HOC that injects meta data directly into `<head>` through the `<Head>` component provided by Next.js */
+// TODO: memoize this component to avoid re-rendering unless necessary
+/** HOC that injects metadata directly into `<head>` through the `<Head>` component provided by Next.js */
 export default function NextHead(props: NextHeadProps) {
     const { defaults, children, ...rest } = props;
 

@@ -5,8 +5,7 @@ import Link from "next/link"
 import { AppPageProps } from "pages/_app";
 import styles from "./Home.module.scss"
 
-export default function Home(props: AppPageProps) {
-    console.log(props.siteColors);
+export default function Home({ siteColors }: AppPageProps) {
     const dispatch = useAppDispatch();
     const { loading } = usePageLoading();
 
