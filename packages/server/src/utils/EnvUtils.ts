@@ -13,7 +13,6 @@ export class EnvUtils {
     /** Throws alert if any environment variables don't exist */
     public static verifyAllVarsExist = () => {
         let isVarMissing = false;
-
         let envVar: keyof typeof EnvUtils.Vars;
 
         for (envVar in this.Vars) {
