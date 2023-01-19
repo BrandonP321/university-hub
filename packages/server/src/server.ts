@@ -1,11 +1,9 @@
-import dotenv from "dotenv";
 import express from "express";
 import { createServer } from "http";
 import { configureApp } from "@/Middleware";
+import { EnvUtils } from "@/Utils";
 
-dotenv.config();
-
-const PORT = process.env.PORT || 8000;
+EnvUtils.verifyAllVarsExist();
 
 const app = express();
 const httpServer = createServer(app);
@@ -31,6 +29,6 @@ app.get("/test", (req, res) => {
     console.log(req.cookies.Authorization)
 })
 
-httpServer.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`)
+httpServer.listen(EnvUtils.Vars.PORT, () => {
+    console.log(`Server listening on port ${EnvUtils.Vars.PORT}`)
 })
