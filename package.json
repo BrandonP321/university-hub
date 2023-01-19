@@ -3,11 +3,15 @@
   "packageManager": "yarn@3.3.0",
   "workspaces": [
     "packages/web/*",
+    "packages/server",
     "packages/shared"
   ],
   "scripts": {
     "web:main": "yarn workspace @university-hub/web-main",
-    "web:main:start": "yarn web:main dev"
+    "web:main:start": "yarn web:main dev",
+    "server": "yarn workspace @university-hub/server",
+    "server:dev": "yarn server dev",
+    "web:start": "yarn concurrently --kill-other-on-fail -n \"SERVER,WEB\" -C \"magenta,cyan\" \"yarn server:dev\" \"yarn web:main:start\""
   },
   "devDependencies": {
     "turbo": "^1.6.3"
