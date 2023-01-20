@@ -1,6 +1,6 @@
 export * from "./HttpStatusCodes";
-export { UserApiEndpoints } from "./user.endpoints";
-export { UniversityApiEndpoints } from "./university.endpoints";
+export type { UserApiEndpoints } from "./user.endpoints";
+export type { UniversityApiEndpoints } from "./university.endpoints";
 
 export namespace ApiEndoint {
 

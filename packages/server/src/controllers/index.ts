@@ -6,3 +6,5 @@ export type ApiHandler<TEndpoint extends ApiEndoint.Types.Endpoint> = RequestHan
     ApiEndoint.Types.ResBody<TEndpoint>,
     ApiEndoint.Types.ReqBody<TEndpoint>
 >;
+
+export * from "./university.controllers";
