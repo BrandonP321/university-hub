@@ -7,6 +7,8 @@ import { sliceHelpers, store } from "@/Store";
 import { useEffect, useRef } from "react";
 import { ReduxUtils } from "@university-hub/shared/web/utils";
 import { SiteColorsMap } from "@university-hub/shared/common/utils";
+import axios from "axios";
+import { UniversityApiEndpoints } from "@university-hub/shared/api/endpoints"
 
 /** Props passed into each page component */
 export type AppPageProps = {
@@ -37,12 +39,7 @@ function App({ Component, pageProps }: AppProps<AppPageProps>) {
   )
 }
 
-const tempColors: SiteColorsMap = {
-  primaryBgColor: "rgb(100, 0, 0)",
-  secondaryBgColor: "rgb(0, 0, 0)",
-  primaryTextColor: "rgb(0, 0, 0)",
-  secondaryTextColor: "rgb(0, 0, 0)",
-}
+const ApiDomain = "http://server.local.com:8000";
 
 App.getInitialProps = async function getServerSideProps({ router }: any): Promise<{ pageProps: AppPageProps } | {}> {
   /* Detect whether or not `.getInitialProps()` is running on the server */
@@ -50,12 +47,9 @@ App.getInitialProps = async function getServerSideProps({ router }: any): Promis
   
   /** Only pre-fetch data if .getInitialProps() is be executed for the first time, which would happen on the server */
   if (isRunningOnServer) {
-    // TODO: replace this simulated server response delay with an actual API fetch
-    const res = await (new Promise((resolve, reject) => {
-        setTimeout(resolve, 150);
-    }))
-    
-    return { pageProps: { siteColors: tempColors, isInitialPropsMap: true } }
+    const { data } = await axios.get<UniversityApiEndpoints.GetUniversityShallow["ResBody"]>(`${ApiDomain}/university/uw/shallow`, { withCredentials: true });
+
+    return { pageProps: { siteColors: data.siteColors, isInitialPropsMap: true } }
   } else {
     return {}
   }

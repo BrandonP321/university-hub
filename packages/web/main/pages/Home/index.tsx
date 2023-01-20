@@ -8,10 +8,10 @@ import styles from "./Home.module.scss"
 export default function Home({ siteColors }: AppPageProps) {
     const dispatch = useAppDispatch();
     const { loading } = usePageLoading();
-
+    
     const handleClick = () => {
         dispatch(actions.pageLoading.setShowPageSpinner({ loading: !loading }));
-
+        
         setTimeout(() => {
             dispatch(actions.pageLoading.setShowPageSpinner({ loading }))
         }, 1500)

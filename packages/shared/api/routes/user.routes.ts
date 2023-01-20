@@ -1,7 +1,6 @@
 import { ApiEndpointUrl } from ".";
+import { UserApiEndpoints } from "../endpoints";
 
-type TGetUserUrlParams = "userId";
-
-export const UserRoutes = {
-    getUserById: ApiEndpointUrl<TGetUserUrlParams>("/user/:userId")
+export const UserApiRoutes = {
+    getUserById: ApiEndpointUrl<UserApiEndpoints.GetUser>("/user/:userId")
 } as const;

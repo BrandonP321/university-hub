@@ -1,8 +1,8 @@
-export * from "./user.routes";
+import { ApiEndoint } from "../endpoints";
 
 /** Returns callback for constructing a url path for an api endpoint, replacing url params if provided */
-export function ApiEndpointUrl<TUrlParams extends string>(path: string) {
-    return (urlParams?: {[key in TUrlParams]: string}) => {
+export function ApiEndpointUrl<TEndoint extends ApiEndoint.Types.Endpoint>(path: string) {
+    return (urlParams?: {[key in ApiEndoint.Types.UrlParams<TEndoint>]: string}) => {
 
         // replace each param (':someParam') in the path with the param values if provided
         if (urlParams) {
@@ -19,3 +19,5 @@ export function ApiEndpointUrl<TUrlParams extends string>(path: string) {
     }
 }
 
+export * from "./user.routes";
+export * from "./university.routes";
