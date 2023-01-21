@@ -39,15 +39,13 @@ function App({ Component, pageProps }: AppProps<AppPageProps>) {
   )
 }
 
-const ApiDomain = "http://server.local.com:8000";
-
 App.getInitialProps = async function getServerSideProps({ router }: any): Promise<{ pageProps: AppPageProps } | {}> {
   /* Detect whether or not `.getInitialProps()` is running on the server */
   const isRunningOnServer = router.isSsr === undefined
   
   /** Only pre-fetch data if .getInitialProps() is be executed for the first time, which would happen on the server */
   if (isRunningOnServer) {
-    const { data } = await axios.get<UniversityApiEndpoints.GetUniversityShallow["ResBody"]>(`${ApiDomain}/university/uw/shallow`, { withCredentials: true });
+    const { data } = await axios.get<UniversityApiEndpoints.GetUniversityShallow["ResBody"]>(`${process.env.NEXT_PUBLIC_API_DOMAIN}/university/uw/shallow`, { withCredentials: true });
 
     return { pageProps: { siteColors: data.siteColors, isInitialPropsMap: true } }
   } else {
