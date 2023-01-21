@@ -1,4 +1,4 @@
-import { AnyAction, configureStore, Reducer, ReducersMapObject, StateFromReducersMapObject, Store } from "@reduxjs/toolkit";
+import { AnyAction, configureStore, Reducer, ReducersMapObject, StateFromReducersMapObject } from "@reduxjs/toolkit";
 import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
 import { useDispatch, useSelector } from "react-redux";
 import { TypedUseSelectorHook } from "react-redux/es/types";
@@ -39,7 +39,7 @@ export class ReduxStore<TReducer extends ReducersMapObject, TActions extends Act
         pageLoading: () => this.addReducers({ pageLoading: { reducer: pageLoadingReducer, actions: pageLoadingSliceActions }}),
         responsive: () => this.addReducers({ responsive: { 
             reducer: responsiveReducer, actions: responsiveSliceActions, sliceHelpers: import("../store/features/responsive/Responsive")
-        }}),
+        }}), 
     })
 
     /** Allows for chaining of a reducer function from `.getDefaultReducers()` to add that reducer to the store */
@@ -63,7 +63,12 @@ export class ReduxStore<TReducer extends ReducersMapObject, TActions extends Act
             store = store.with()[r]();
         }
 
-        return store as ReduxStore<TReducer & TDefaultReducerMap, TActions & TDefaultActionsMap, TSliceHelpers & TDefaultSliceHelpersMap>;
+        type TNewStore = ReduxStore<TReducer & TDefaultReducerMap, TActions & TDefaultActionsMap, TSliceHelpers & TDefaultSliceHelpersMap>;
+
+        /** Binding store to correctly typed variable keeps TS happy */
+        const newStore: TNewStore = store as TNewStore;
+
+        return newStore;
     }
 
     /** Adds any number of reducers to store and returns new ReduxStore instance for chaining of methods */
