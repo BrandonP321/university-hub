@@ -13,9 +13,7 @@ type LayoutProps = {
  * App layout that persists across all pages
  */
 export default function Layout({ children, siteColors }: LayoutProps) {
-    useEffect(() => {
-        WebColorUtils.setSiteColors(siteColors);
-    }, [])
+    WebColorUtils.setSiteColors(siteColors);
 
     return (
         <>
