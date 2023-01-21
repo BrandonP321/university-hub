@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FullPageLoadingSpinner } from "@university-hub/shared/web/UIKit";
 import { RouterPageLoadingSpinner } from "@university-hub/shared/web/components/PageLoadingSpinner";
 import { SiteColorsMap } from "@university-hub/shared/common/utils";
@@ -13,14 +13,23 @@ type LayoutProps = {
  * App layout that persists across all pages
  */
 export default function Layout({ children, siteColors }: LayoutProps) {
-    WebColorUtils.setSiteColors(siteColors);
+    const [areColorsSet, setAreColorsSet] = useState(false);
+
+    useEffect(() => {
+        WebColorUtils.setSiteColors(siteColors);
+        setAreColorsSet(true);
+    }, [])
 
     return (
         <>
             <RouterPageLoadingSpinner/>
             <main>
-                <FullPageLoadingSpinner/>
-                {children}
+                {areColorsSet &&
+                    <>
+                        <FullPageLoadingSpinner/>
+                        {children}
+                    </>
+                }
             </main>
         </>
     )
