@@ -4,6 +4,7 @@
 @include GlobalCssVars();
 
 * {
+	color: $textPrimary;
 	scroll-behavior: smooth;
 
 	// set custom scroll styles for devices that have a cursor
@@ -21,7 +22,6 @@
 }
 
 html {
-	color: $colorTextPrimary;
 }
 
 body {
